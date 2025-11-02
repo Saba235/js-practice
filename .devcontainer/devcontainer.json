@@ -1,0 +1,40 @@
+{
+  "name": "JavaScript Dev Container",
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+
+  // Features help you add common tools easily
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20"
+    },
+    "ghcr.io/devcontainers/features/git:1": {}
+  },
+
+  // Folder setup
+  "workspaceFolder": "/workspace",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+
+  // Open ports (for servers, React dev server, etc.)
+  "forwardPorts": [3000, 8080],
+
+  // Automatically install dependencies
+  "postCreateCommand": "npm install",
+
+  // VS Code customizations inside the container
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "formulahendry.code-runner"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+      }
+    }
+  },
+
+  // Use the vscode user for correct file permissions
+  "remoteUser": "vscode"
+}
